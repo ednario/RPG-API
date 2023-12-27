@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
 
-import { Equipments } from '@equipments/entities/Equipments';
-
 import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
 
 interface DeleteEquipmentsRequest {
@@ -12,7 +10,7 @@ interface DeleteEquipmentsRequest {
 export class DeleteEquipmentsUseCase {
   constructor(private equipmentsRepository: EquipmentsRepository) {}
 
-  async execute({ id }: DeleteEquipmentsRequest): Promise<Equipments> {
+  async execute({ id }: DeleteEquipmentsRequest): Promise<void> {
     const equipments = await this.equipmentsRepository.findById(id);
 
     if (!equipments) {
@@ -20,7 +18,5 @@ export class DeleteEquipmentsUseCase {
     }
 
     await this.equipmentsRepository.delete(id);
-
-    return equipments;
   }
 }
