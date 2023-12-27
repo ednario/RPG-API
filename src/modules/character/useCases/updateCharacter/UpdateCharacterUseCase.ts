@@ -1,11 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
 import { Character } from '@character/entities/Character';
-import { Attributes } from '@attributes/entities/attributes';
-import { Equipments } from '@equipments/entities/Equipments';
-import { Phobias } from '@phobias/entities/Phobias';
-import { Inventory } from '@inventory/entities/Inventory';
-import { Skill } from '@skill/entities/Skill';
 
 import { CharacterRepository } from '@character/repositories/CharacterRepository';
 
@@ -17,12 +12,8 @@ interface UpdateCharacterRequest {
   experience: number;
   gold: number;
   maximumAttack: number;
-  minimumAttack: number;
-  attributes: Attributes;
-  equipments: Equipments;
-  phobias: Phobias;
-  inventory: Inventory[];
-  skill: Skill[];
+  maximumDefense: number;
+  userId: string;
 }
 
 interface UpdateCharacterResponse {
@@ -44,12 +35,8 @@ export class UpdateCharacterUseCase {
       experience,
       gold,
       maximumAttack,
-      minimumAttack,
-      attributes,
-      equipments,
-      phobias,
-      inventory,
-      skill,
+      maximumDefense,
+      userId,
     } = request;
 
     const characterExists = await this.characterRepository.findById(id);
@@ -64,12 +51,8 @@ export class UpdateCharacterUseCase {
     characterExists.experience = experience;
     characterExists.gold = gold;
     characterExists.maximumAttack = maximumAttack;
-    characterExists.minimumAttack = minimumAttack;
-    characterExists.attributes = attributes;
-    characterExists.equipments = equipments;
-    characterExists.phobias = phobias;
-    characterExists.inventory = inventory;
-    characterExists.skill = skill;
+    characterExists.maximumDefense = maximumDefense;
+    characterExists.userId = userId;
 
     await this.characterRepository.update(characterExists);
 

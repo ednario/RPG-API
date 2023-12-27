@@ -12,6 +12,7 @@ interface CreateAttributesRequest {
   dexterity: number;
   constitution: number;
   intelligence: number;
+  characterId: string;
 }
 
 interface CreateAttributesResponse {
@@ -25,8 +26,16 @@ export class CreateAttributesUseCase {
   async execute(
     request: CreateAttributesRequest,
   ): Promise<CreateAttributesResponse> {
-    const { hp, mp, strength, agility, dexterity, constitution, intelligence } =
-      request;
+    const {
+      hp,
+      mp,
+      strength,
+      agility,
+      dexterity,
+      constitution,
+      intelligence,
+      characterId,
+    } = request;
 
     const attributes = new Attributes({
       hp,
@@ -36,6 +45,7 @@ export class CreateAttributesUseCase {
       dexterity,
       constitution,
       intelligence,
+      characterId,
     });
 
     await this.attributesRepository.create(attributes);

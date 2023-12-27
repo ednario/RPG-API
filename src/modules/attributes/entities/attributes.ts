@@ -8,6 +8,7 @@ export interface AttributesProps {
   dexterity: number;
   constitution: number;
   intelligence: number;
+  characterId: string;
 }
 
 export class Attributes {
@@ -79,5 +80,13 @@ export class Attributes {
 
   public get intelligence(): number {
     return this.props.intelligence;
+  }
+
+  public get characterId(): string {
+    return this.props.characterId;
+  }
+
+  public set characterId(characterId: string) {
+    this.props.characterId = characterId;
   }
 }
