@@ -3,18 +3,13 @@ import { CreateEquipmentsUseCase } from './CreateEquipmentsUseCase';
 import { EquipmentsRepositoryInMemory } from '../../../../../test/repositories/EquipmentsRepositoryInMemory';
 
 describe('CreateEquipmentsUseCase', () => {
-  let equipmentsRepositoryInMemory: EquipmentsRepositoryInMemory;
-  let createEquipmentsUseCase: CreateEquipmentsUseCase;
-
-  beforeEach(() => {
-    equipmentsRepositoryInMemory = new EquipmentsRepositoryInMemory();
-    createEquipmentsUseCase = new CreateEquipmentsUseCase(
+  it('should be able to create a new equipment', async () => {
+    const equipmentsRepositoryInMemory = new EquipmentsRepositoryInMemory();
+    const createEquipmentsUseCase = new CreateEquipmentsUseCase(
       equipmentsRepositoryInMemory,
     );
-  });
 
-  it('should create equipments', async () => {
-    const equipments = await createEquipmentsUseCase.execute({
+    const { equipments } = await createEquipmentsUseCase.execute({
       head: 'head',
       chest: 'chest',
       gloves: 'gloves',
@@ -23,6 +18,7 @@ describe('CreateEquipmentsUseCase', () => {
       rightGun: 'rightGun',
     });
 
-    expect(equipments).toBeDefined();
+    expect(equipmentsRepositoryInMemory.equipments).toHaveLength(1);
+    expect(equipmentsRepositoryInMemory.equipments[0]).toEqual(equipments);
   });
 });

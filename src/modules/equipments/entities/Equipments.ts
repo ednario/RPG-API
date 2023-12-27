@@ -28,7 +28,7 @@ export class Equipments {
     this.props.head = head;
   }
 
-  public get head(): string {
+  public get head(): string | undefined {
     return this.props.head;
   }
 
@@ -36,7 +36,7 @@ export class Equipments {
     this.props.chest = chest;
   }
 
-  public get chest(): string {
+  public get chest(): string | undefined {
     return this.props.chest;
   }
 
@@ -44,7 +44,7 @@ export class Equipments {
     this.props.gloves = gloves;
   }
 
-  public get gloves(): string {
+  public get gloves(): string | undefined {
     return this.props.gloves;
   }
 
@@ -52,7 +52,7 @@ export class Equipments {
     this.props.boots = boots;
   }
 
-  public get boots(): string {
+  public get boots(): string | undefined {
     return this.props.boots;
   }
 
@@ -60,7 +60,7 @@ export class Equipments {
     this.props.leftGun = leftGun;
   }
 
-  public get leftGun(): string {
+  public get leftGun(): string | undefined {
     return this.props.leftGun;
   }
 }

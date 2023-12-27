@@ -2,7 +2,7 @@ import { Equipments } from 'src/modules/equipments/entities/Equipments';
 import { EquipmentsRepository } from 'src/modules/equipments/repositories/EquipmentsRepository';
 
 export class EquipmentsRepositoryInMemory implements EquipmentsRepository {
-  equipments: Equipments[] = [];
+  public equipments: Equipments[] = [];
 
   async create(equipments: Equipments): Promise<void> {
     this.equipments.push(equipments);
@@ -13,7 +13,13 @@ export class EquipmentsRepositoryInMemory implements EquipmentsRepository {
   }
 
   async findById(id: string): Promise<Equipments> {
-    return this.equipments.find((equipment) => equipment.id === id);
+    const equipment = this.equipments.find((equipment) => equipment.id === id);
+
+    if (!equipment) {
+      throw new Error('Equipment not found');
+    }
+
+    return equipment;
   }
 
   async update(equipments: Equipments): Promise<void> {

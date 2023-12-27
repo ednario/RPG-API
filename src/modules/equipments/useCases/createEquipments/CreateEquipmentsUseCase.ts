@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { Equipments } from '@equipments/entities/Equipments';
+import { Equipments } from '../../entities/Equipments';
 
 import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
 
