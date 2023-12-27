@@ -22,6 +22,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@equipments/*": ["src/modules/equipments/*"],
+      "@attributes/*": ["src/modules/attributes/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@infra/*": ["./src/infra/*"],
       "@test/*": ["./test/*"],
