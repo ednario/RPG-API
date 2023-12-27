@@ -23,6 +23,10 @@
     "paths": {
       "@equipments/*": ["src/modules/equipments/*"],
       "@attributes/*": ["src/modules/attributes/*"],
+      "@phobias/*": ["src/modules/phobias/*"],
+      "@skill/*": ["src/modules/skill/*"],
+      "@character/*": ["src/modules/character/*"],
+      "@inventory/*": ["src/modules/inventory/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@infra/*": ["./src/infra/*"],
       "@test/*": ["./test/*"],

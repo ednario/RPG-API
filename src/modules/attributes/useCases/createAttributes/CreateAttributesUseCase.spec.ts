@@ -24,8 +24,6 @@ describe('CreateAttributesUseCase', () => {
       intelligence: attributes.intelligence,
     });
 
-    console.log(response);
-
     expect(response).toHaveProperty('attributes');
   });
 });
