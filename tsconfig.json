@@ -18,8 +18,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@tasks/*": ["src/modules/tasks/*"],
-      "@users/*": ["src/modules/users/*"],
+      "@equipments/*": ["src/modules/equipments/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@infra/*": ["./src/infra/*"],
       "@test/*": ["./test/*"],

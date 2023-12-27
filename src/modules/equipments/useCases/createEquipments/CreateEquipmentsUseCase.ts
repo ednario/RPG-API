@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
-import { Equipments } from '../entities/Equipments';
+import { Equipments } from '@equipments/entities/Equipments';
 
-import { EquipmentsRepository } from '../repositories/EquipmentsRepository';
+import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
 
 interface CreateEquipmentRequest {
   head?: string;
