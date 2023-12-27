@@ -34,6 +34,8 @@ describe('FindByIdEquipmentsUseCase', () => {
       id: equipments.id,
     });
 
+    console.log(equipmentFound);
+
     expect(equipmentFound).toHaveProperty('equipments');
     expect(equipmentFound.equipments.id).toBe(equipments.id);
   });

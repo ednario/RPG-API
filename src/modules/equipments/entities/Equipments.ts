@@ -63,4 +63,12 @@ export class Equipments {
   public get leftGun(): string | undefined {
     return this.props.leftGun;
   }
+
+  public set rightGun(rightGun: string) {
+    this.props.rightGun = rightGun;
+  }
+
+  public get rightGun(): string | undefined {
+    return this.props.rightGun;
+  }
 }
