@@ -22,6 +22,7 @@ describe('CreateAttributesUseCase', () => {
       dexterity: attributes.dexterity,
       constitution: attributes.constitution,
       intelligence: attributes.intelligence,
+      characterId: attributes.characterId,
     });
 
     expect(response).toHaveProperty('attributes');

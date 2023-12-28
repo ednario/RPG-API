@@ -39,8 +39,8 @@ export class PrismaCharacterRepository implements CharacterRepository {
     });
   }
 
-  async update(Character: Character): Promise<void> {
-    const raw = PrismaCharacterMapper.toPrisma(Character);
+  async update(character: Character): Promise<void> {
+    const raw = PrismaCharacterMapper.toPrisma(character);
 
     await this.prisma.character.update({
       where: {

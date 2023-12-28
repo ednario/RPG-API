@@ -10,6 +10,10 @@ import { AttributesRepository } from '@attributes/repositories/AttributesReposit
 export class PrismaAttributesRepository implements AttributesRepository {
   constructor(private prisma: PrismaService) {}
 
+  async findAll(): Promise<any> {
+    return await this.prisma.attributes.findMany();
+  }
+
   async findById(attribustesId: string): Promise<Attributes> {
     const attributes = await this.prisma.attributes.findUnique({
       where: {
@@ -22,10 +26,6 @@ export class PrismaAttributesRepository implements AttributesRepository {
     }
 
     return PrismaAttributesMapper.toDomain(attributes);
-  }
-
-  async listAll(): Promise<any> {
-    return await this.prisma.attributes.findMany();
   }
 
   async create(attributes: Attributes): Promise<void> {

@@ -13,6 +13,7 @@ interface UpdateAttributesUseCaseRequest {
   dexterity: number;
   constitution: number;
   intelligence: number;
+  characterId: string;
 }
 
 interface UpdateAttributesUseCaseResponse {
@@ -35,6 +36,7 @@ export class UpdateAttributesUseCase {
       dexterity,
       constitution,
       intelligence,
+      characterId,
     } = request;
     const attributesExists = await this.attributesRepository.findById(id);
 
@@ -49,6 +51,7 @@ export class UpdateAttributesUseCase {
     attributesExists.dexterity = dexterity;
     attributesExists.constitution = constitution;
     attributesExists.intelligence = intelligence;
+    attributesExists.characterId = characterId;
 
     await this.attributesRepository.update(attributesExists);
 

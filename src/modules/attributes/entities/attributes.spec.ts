@@ -12,6 +12,7 @@ describe('Attributes', () => {
       dexterity: 10,
       constitution: 10,
       intelligence: 10,
+      characterId: 'a813bbb8-f052-47a0-a548-675455ebd8a7',
     });
   });
 
