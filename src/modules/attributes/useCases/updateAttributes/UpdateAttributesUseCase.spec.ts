@@ -25,6 +25,7 @@ describe('UpdateAttributesUseCase', () => {
       dexterity: attributes.dexterity,
       constitution: attributes.constitution,
       intelligence: attributes.intelligence,
+      characterId: attributes.characterId,
     });
 
     expect(attributesRepositoryInMemory.attributes[0].hp).toBe(100);

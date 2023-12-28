@@ -1,12 +1,13 @@
 import { randomUUID } from 'crypto';
 
 export interface EquipmentsProps {
-  head?: string;
-  chest?: string;
-  gloves?: string;
-  boots?: string;
-  leftGun?: string;
-  rightGun?: string;
+  head: string | null;
+  chest: string | null;
+  gloves: string | null;
+  boots: string | null;
+  leftGun: string | null;
+  rightGun: string | null;
+  characterId: string;
 }
 
 export class Equipments {
@@ -28,7 +29,7 @@ export class Equipments {
     this.props.head = head;
   }
 
-  public get head(): string | undefined {
+  public get head(): string | null {
     return this.props.head;
   }
 
@@ -36,7 +37,7 @@ export class Equipments {
     this.props.chest = chest;
   }
 
-  public get chest(): string | undefined {
+  public get chest(): string | null {
     return this.props.chest;
   }
 
@@ -44,7 +45,7 @@ export class Equipments {
     this.props.gloves = gloves;
   }
 
-  public get gloves(): string | undefined {
+  public get gloves(): string | null {
     return this.props.gloves;
   }
 
@@ -52,7 +53,7 @@ export class Equipments {
     this.props.boots = boots;
   }
 
-  public get boots(): string | undefined {
+  public get boots(): string | null {
     return this.props.boots;
   }
 
@@ -60,7 +61,7 @@ export class Equipments {
     this.props.leftGun = leftGun;
   }
 
-  public get leftGun(): string | undefined {
+  public get leftGun(): string | null {
     return this.props.leftGun;
   }
 
@@ -68,7 +69,15 @@ export class Equipments {
     this.props.rightGun = rightGun;
   }
 
-  public get rightGun(): string | undefined {
+  public get rightGun(): string | null {
     return this.props.rightGun;
+  }
+
+  public set characterId(characterId: string) {
+    this.props.characterId = characterId;
+  }
+
+  public get characterId(): string {
+    return this.props.characterId;
   }
 }

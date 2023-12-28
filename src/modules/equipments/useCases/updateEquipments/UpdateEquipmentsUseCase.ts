@@ -6,12 +6,13 @@ import { EquipmentsRepository } from '../../repositories/EquipmentsRepository';
 
 interface UpdateEquipmentsRequest {
   id: string;
-  head?: string;
-  chest?: string;
-  gloves?: string;
-  boots?: string;
-  leftGun?: string;
-  rightGun?: string;
+  head: string | null;
+  chest: string | null;
+  gloves: string | null;
+  boots: string | null;
+  leftGun: string | null;
+  rightGun: string | null;
+  characterId: string;
 }
 
 interface UpdateEquipmentsResponse {
@@ -53,6 +54,10 @@ export class UpdateEquipmentsUseCase {
 
     if (request.rightGun) {
       equipments.rightGun = request.rightGun;
+    }
+
+    if (request.characterId) {
+      equipments.characterId = request.characterId;
     }
 
     await this.equipmentsRepository.update(equipments);

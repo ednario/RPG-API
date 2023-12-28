@@ -6,6 +6,8 @@ import { PrismaCharacterRepository } from './prisma/repositories/prisma-characte
 import { CharacterRepository } from '@character/repositories/CharacterRepository';
 import { AttributesRepository } from '@attributes/repositories/AttributesRepository';
 import { PrismaAttributesRepository } from './prisma/repositories/prisma-attributes.repository';
+import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
+import { PrismaEquipmentsRepository } from './prisma/repositories/prisma-equipments.reposity';
 
 @Module({
   providers: [
@@ -18,7 +20,11 @@ import { PrismaAttributesRepository } from './prisma/repositories/prisma-attribu
       provide: AttributesRepository,
       useClass: PrismaAttributesRepository,
     },
+    {
+      provide: EquipmentsRepository,
+      useClass: PrismaEquipmentsRepository,
+    },
   ],
-  exports: [CharacterRepository, AttributesRepository],
+  exports: [CharacterRepository, AttributesRepository, EquipmentsRepository],
 })
 export class DatabaseModule {}

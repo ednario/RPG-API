@@ -9,7 +9,7 @@ export class AttributesRepositoryInMemory implements AttributesRepository {
     this.attributes.push(attributes);
   }
 
-  async listAll(): Promise<Attributes[]> {
+  async findAll(): Promise<Attributes[]> {
     return this.attributes;
   }
 

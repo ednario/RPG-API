@@ -5,12 +5,13 @@ import { Equipments } from '../../entities/Equipments';
 import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
 
 interface CreateEquipmentRequest {
-  head?: string;
-  chest?: string;
-  gloves?: string;
-  boots?: string;
-  leftGun?: string;
-  rightGun?: string;
+  head: string | null;
+  chest: string | null;
+  gloves: string | null;
+  boots: string | null;
+  leftGun: string | null;
+  rightGun: string | null;
+  characterId: string;
 }
 
 interface CreateEquipmentResponse {
@@ -24,7 +25,8 @@ export class CreateEquipmentsUseCase {
   async execute(
     request: CreateEquipmentRequest,
   ): Promise<CreateEquipmentResponse> {
-    const { head, chest, gloves, boots, leftGun, rightGun } = request;
+    const { head, chest, gloves, boots, leftGun, rightGun, characterId } =
+      request;
 
     const equipments = new Equipments({
       head,
@@ -33,6 +35,7 @@ export class CreateEquipmentsUseCase {
       boots,
       leftGun,
       rightGun,
+      characterId,
     });
 
     await this.equipmentsRepository.create(equipments);

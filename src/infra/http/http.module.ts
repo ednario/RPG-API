@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 
 import { DatabaseModule } from '@infra/database/database.module';
+
 import { CharacterController } from '@infra/http/controllers/character.controller';
+import { AttributesController } from '@infra/http/controllers/attributes.controller';
+import { EquipmentsController } from '@infra/http/controllers/equipments.controller';
 
 import { CreateCharacterUseCase } from '@character/useCases/createCharacter/CreateCharacterUseCase';
 import { FindByIdCharacterUseCase } from '@character/useCases/findByIdCharacter/FindByIdCharacterUseCase';
@@ -13,11 +16,19 @@ import { FindByIdAttributesUseCase } from '@attributes/useCases/findByIdAttribut
 import { FindAllAttributesUseCase } from '@attributes/useCases/findAllAttributes/FindAllAttributesUseCase';
 import { UpdateAttributesUseCase } from '@attributes/useCases/updateAttributes/UpdateAttributesUseCase';
 import { DeleteAttributesUseCase } from '@attributes/useCases/deleteAttributes/DeleteAttributesUseCase';
-import { AttributesController } from './controllers/attributes.controller';
+import { FindAllEquipmentsUseCase } from '@equipments/useCases/findAllEquipments/FindAllEquipmentsUseCase';
+import { FindByIdEquipmentsUseCase } from '@equipments/useCases/findByIdEquipments/FindByIdEquipmentsUseCase';
+import { CreateEquipmentsUseCase } from '@equipments/useCases/createEquipments/CreateEquipmentsUseCase';
+import { UpdateEquipmentsUseCase } from '@equipments/useCases/updateEquipments/UpdateEquipmentsUseCase';
+import { DeleteEquipmentsUseCase } from '@equipments/useCases/deleteEquipments/DeleteEquipmentsUseCase';
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [CharacterController, AttributesController],
+  controllers: [
+    CharacterController,
+    AttributesController,
+    EquipmentsController,
+  ],
   providers: [
     CreateCharacterUseCase,
     FindByIdCharacterUseCase,
@@ -29,6 +40,11 @@ import { AttributesController } from './controllers/attributes.controller';
     FindAllAttributesUseCase,
     UpdateAttributesUseCase,
     DeleteAttributesUseCase,
+    FindAllEquipmentsUseCase,
+    FindByIdEquipmentsUseCase,
+    CreateEquipmentsUseCase,
+    UpdateEquipmentsUseCase,
+    DeleteEquipmentsUseCase,
   ],
 })
 export class HttpModule {}
