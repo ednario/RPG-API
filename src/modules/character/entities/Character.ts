@@ -8,7 +8,7 @@ export interface CharacterProps {
   gold: number;
   maximumAttack: number;
   maximumDefense: number;
-  userId?: string;
+  userId: string | null;
 }
 
 export class Character {
@@ -82,11 +82,11 @@ export class Character {
     return this.props.maximumDefense;
   }
 
-  public set userId(userId: string) {
+  public set userId(userId: string | null) {
     this.props.userId = userId;
   }
 
-  public get userId(): string | undefined {
+  public get userId(): string | null {
     return this.props.userId;
   }
 }

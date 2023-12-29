@@ -12,7 +12,7 @@ interface CreateCharacterRequest {
   gold: number;
   maximumAttack: number;
   maximumDefense: number;
-  userId?: string;
+  userId: string | null;
 }
 
 interface CreateCharacterResponse {

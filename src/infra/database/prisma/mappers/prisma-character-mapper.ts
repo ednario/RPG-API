@@ -13,6 +13,7 @@ export class PrismaCharacterMapper {
       gold: character.gold,
       maximumAttack: character.maximumAttack,
       maximumDefense: character.maximumDefense,
+      userId: character.userId,
     };
   }
 
@@ -26,6 +27,7 @@ export class PrismaCharacterMapper {
         gold: raw.gold,
         maximumAttack: raw.maximumAttack,
         maximumDefense: raw.maximumDefense,
+        userId: raw.userId,
       },
       raw.id,
     );
