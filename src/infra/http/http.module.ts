@@ -8,6 +8,7 @@ import { EquipmentsController } from '@infra/http/controllers/equipments.control
 import { InventoryController } from './controllers/inventory.controller';
 import { PhobiasController } from './controllers/phobias.controller';
 import { SkillController } from './controllers/skill.controller';
+import { UserController } from './controllers/user.controller';
 
 import { CreateCharacterUseCase } from '@character/useCases/createCharacter/CreateCharacterUseCase';
 import { FindByIdCharacterUseCase } from '@character/useCases/findByIdCharacter/FindByIdCharacterUseCase';
@@ -45,6 +46,12 @@ import { CreateSkillUseCase } from '@skill/useCases/createSkill/CreateSkillUseCa
 import { UpdateSkillUseCase } from '@skill/useCases/updateSkill/UpdateSkillUseCase';
 import { DeleteSkillUseCase } from '@skill/useCases/deleteSkill/DeleteSkillUseCase';
 
+import { FindAllUserUseCase } from '@user/useCases/findAllUser/FindAllUserUseCase';
+import { FindByIdUserUseCase } from '@user/useCases/findByIdUser/FindByIdUserUseCase';
+import { UpdateUserUseCase } from '@user/useCases/updateUser/UpdateUserUseCase';
+import { DeleteUserUseCase } from '@user/useCases/deleteUser/DeleteUserUseCase';
+import { CreateUserUseCase } from '@user/useCases/createUser/CreateUserUseCase';
+
 @Module({
   imports: [DatabaseModule],
   controllers: [
@@ -54,6 +61,7 @@ import { DeleteSkillUseCase } from '@skill/useCases/deleteSkill/DeleteSkillUseCa
     InventoryController,
     PhobiasController,
     SkillController,
+    UserController,
   ],
   providers: [
     CreateCharacterUseCase,
@@ -86,6 +94,11 @@ import { DeleteSkillUseCase } from '@skill/useCases/deleteSkill/DeleteSkillUseCa
     CreateSkillUseCase,
     UpdateSkillUseCase,
     DeleteSkillUseCase,
+    FindAllUserUseCase,
+    FindByIdUserUseCase,
+    UpdateUserUseCase,
+    DeleteUserUseCase,
+    CreateUserUseCase,
   ],
 })
 export class HttpModule {}

@@ -27,6 +27,7 @@
       "@skill/*": ["src/modules/skill/*"],
       "@character/*": ["src/modules/character/*"],
       "@inventory/*": ["src/modules/inventory/*"],
+      "@user/*": ["src/modules/user/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@infra/*": ["./src/infra/*"],
       "@test/*": ["./test/*"],
