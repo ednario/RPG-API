@@ -76,12 +76,6 @@ export class EquipmentsController {
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: CreateEquipmentBody) {
     try {
-      const equipments = await this.findByIdEquipmentsUseCase.execute({ id });
-
-      if (!equipments) {
-        throw new Error('Character not found');
-      }
-
       const newEquipments = await this.updateEquipmentsUseCase.execute({
         id,
         ...body,
@@ -96,12 +90,6 @@ export class EquipmentsController {
   @Delete(':id')
   async delete(@Param('id') id: string) {
     try {
-      const character = await this.findByIdEquipmentsUseCase.execute({ id });
-
-      if (!character) {
-        throw new Error('Character not found');
-      }
-
       await this.deleteEquipmentsUseCase.execute({
         id,
       });

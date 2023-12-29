@@ -84,12 +84,6 @@ export class CharacterController {
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: CreateCharacterBody) {
     try {
-      const character = await this.findByIdCharacterUseCase.execute({ id });
-
-      if (!character) {
-        throw new Error('Character not found');
-      }
-
       const newCharacter = await this.updateCharacterUseCase.execute({
         id,
         ...body,
@@ -104,12 +98,6 @@ export class CharacterController {
   @Delete(':id')
   async delete(@Param('id') id: string) {
     try {
-      const character = await this.findByIdCharacterUseCase.execute({ id });
-
-      if (!character) {
-        throw new Error('Character not found');
-      }
-
       await this.deleteCharacterUseCase.execute({
         id,
       });

@@ -84,12 +84,6 @@ export class AttributesController {
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: CreateAttributesBody) {
     try {
-      const Attributes = await this.findByIdAttributesUseCase.execute({ id });
-
-      if (!Attributes) {
-        throw new Error('Attributes not found');
-      }
-
       const newAttributes = await this.updateAttributesUseCase.execute({
         id,
         ...body,
@@ -104,12 +98,6 @@ export class AttributesController {
   @Delete(':id')
   async delete(@Param('id') id: string) {
     try {
-      const Attributes = await this.findByIdAttributesUseCase.execute({ id });
-
-      if (!Attributes) {
-        throw new Error('Attributes not found');
-      }
-
       await this.deleteAttributesUseCase.execute({
         id,
       });
