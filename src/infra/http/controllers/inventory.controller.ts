@@ -18,7 +18,7 @@ import { UpdateInventoryUseCase } from '@inventory/useCases/updateInventory/Upda
 import { DeleteInventoryUseCase } from '@inventory/useCases/deleteInventory/DeleteInventoryUseCase';
 
 @Controller('inventory')
-export class inventoryController {
+export class InventoryController {
   constructor(
     private createInventoryUseCase: CreateInventoryUseCase,
     private findByIdInventoryUseCase: FindByIdInventoryUseCase,

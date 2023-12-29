@@ -21,12 +21,18 @@ import { FindByIdEquipmentsUseCase } from '@equipments/useCases/findByIdEquipmen
 import { CreateEquipmentsUseCase } from '@equipments/useCases/createEquipments/CreateEquipmentsUseCase';
 import { UpdateEquipmentsUseCase } from '@equipments/useCases/updateEquipments/UpdateEquipmentsUseCase';
 import { DeleteEquipmentsUseCase } from '@equipments/useCases/deleteEquipments/DeleteEquipmentsUseCase';
-import { inventoryController } from './controllers/inventory.controller';
+import { InventoryController } from './controllers/inventory.controller';
 import { FindAllInventoryUseCase } from '@inventory/useCases/findAllInventory/FindAllInventoryUseCase';
 import { FindByIdInventoryUseCase } from '@inventory/useCases/findByIdInventory/FindByIdInventoryUseCase';
 import { CreateInventoryUseCase } from '@inventory/useCases/createInventory/CreateInventoryUseCase';
 import { UpdateInventoryUseCase } from '@inventory/useCases/updateInventory/UpdateInventoryUseCase';
 import { DeleteInventoryUseCase } from '@inventory/useCases/deleteInventory/DeleteInventoryUseCase';
+import { PhobiasController } from './controllers/phobias.controller';
+import { FindAllPhobiasUseCase } from '@phobias/useCases/findAllPhobias/FindAllPhobiasUseCase';
+import { FindByIdPhobiasUseCase } from '@phobias/useCases/findByIdPhobias/FindByIdPhobiasUseCase';
+import { CreatePhobiasUseCase } from '@phobias/useCases/createPhobias/CreatePhobiasUseCase';
+import { UpdatePhobiasUseCase } from '@phobias/useCases/updatePhobias/UpdatePhobiasUseCase';
+import { DeletePhobiasUseCase } from '@phobias/useCases/deletePhobias/DeletePhobiasUseCase';
 
 @Module({
   imports: [DatabaseModule],
@@ -34,7 +40,8 @@ import { DeleteInventoryUseCase } from '@inventory/useCases/deleteInventory/Dele
     CharacterController,
     AttributesController,
     EquipmentsController,
-    inventoryController,
+    InventoryController,
+    PhobiasController,
   ],
   providers: [
     CreateCharacterUseCase,
@@ -57,6 +64,11 @@ import { DeleteInventoryUseCase } from '@inventory/useCases/deleteInventory/Dele
     CreateInventoryUseCase,
     UpdateInventoryUseCase,
     DeleteInventoryUseCase,
+    FindAllPhobiasUseCase,
+    FindByIdPhobiasUseCase,
+    CreatePhobiasUseCase,
+    UpdatePhobiasUseCase,
+    DeletePhobiasUseCase,
   ],
 })
 export class HttpModule {}

@@ -10,6 +10,8 @@ import { CharacterRepository } from '@character/repositories/CharacterRepository
 import { AttributesRepository } from '@attributes/repositories/AttributesRepository';
 import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
 import { InventoryRepository } from '@inventory/repositories/InventoryRepository';
+import { PhobiasRepository } from '@phobias/repositories/PhobiasRepository';
+import { PrismaPhobiasRepository } from './prisma/repositories/prisma-phobias.repository';
 
 @Module({
   providers: [
@@ -30,12 +32,17 @@ import { InventoryRepository } from '@inventory/repositories/InventoryRepository
       provide: InventoryRepository,
       useClass: PrismaInventoryRepository,
     },
+    {
+      provide: PhobiasRepository,
+      useClass: PrismaPhobiasRepository,
+    },
   ],
   exports: [
     CharacterRepository,
     AttributesRepository,
     EquipmentsRepository,
     InventoryRepository,
+    PhobiasRepository,
   ],
 })
 export class DatabaseModule {}

@@ -8,6 +8,7 @@ interface UpdatePhobiasRequest {
   id: string;
   monster: string;
   amountToOvercome: number;
+  characterId: string;
 }
 
 interface UpdatePhobiasResponse {
@@ -27,6 +28,7 @@ export class UpdatePhobiasUseCase {
 
     phobias.monster = monster;
     phobias.amountToOvercome = amountToOvercome;
+    phobias.characterId = phobias.characterId;
 
     await this.phobiasRepository.update(phobias);
 

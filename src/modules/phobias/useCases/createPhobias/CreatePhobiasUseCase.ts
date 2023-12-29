@@ -7,6 +7,7 @@ import { PhobiasRepository } from '@phobias/repositories/PhobiasRepository';
 interface CreatePhobiasRequest {
   monster: string;
   amountToOvercome: number;
+  characterId: string;
 }
 
 interface CreatePhobiasResponse {
@@ -20,8 +21,9 @@ export class CreatePhobiasUseCase {
   async execute({
     monster,
     amountToOvercome,
+    characterId,
   }: CreatePhobiasRequest): Promise<CreatePhobiasResponse> {
-    const phobias = new Phobias({ monster, amountToOvercome });
+    const phobias = new Phobias({ monster, amountToOvercome, characterId });
 
     await this.phobiasRepository.create(phobias);
 

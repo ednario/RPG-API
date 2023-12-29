@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 export interface PhobiasProps {
   monster: string;
   amountToOvercome: number;
+  characterId: string;
 }
 
 export class Phobias {
@@ -24,7 +25,7 @@ export class Phobias {
     this.props.monster = monster;
   }
 
-  public get monster(): string | undefined {
+  public get monster(): string {
     return this.props.monster;
   }
 
@@ -34,5 +35,13 @@ export class Phobias {
 
   public get amountToOvercome(): number {
     return this.props.amountToOvercome;
+  }
+
+  public set characterId(characterId: string) {
+    this.props.characterId = characterId;
+  }
+
+  public get characterId(): string {
+    return this.props.characterId;
   }
 }
