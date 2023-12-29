@@ -7,6 +7,7 @@ import { InventoryRepository } from '@inventory/repositories/InventoryRepository
 interface CreateInventoryRequest {
   itemName: string;
   amount: number;
+  characterId: string;
 }
 
 interface CreateInventoryResponse {
@@ -20,8 +21,9 @@ export class CreateInventoryUseCase {
   async execute({
     itemName,
     amount,
+    characterId,
   }: CreateInventoryRequest): Promise<CreateInventoryResponse> {
-    const inventory = new Inventory({ itemName, amount });
+    const inventory = new Inventory({ itemName, amount, characterId });
 
     await this.inventoryRepository.create(inventory);
 

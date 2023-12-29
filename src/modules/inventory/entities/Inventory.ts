@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 export interface InventoryProps {
   itemName: string;
   amount: number;
+  characterId: string;
 }
 
 export class Inventory {
@@ -24,7 +25,7 @@ export class Inventory {
     this.props.itemName = itemName;
   }
 
-  public get itemName(): string | undefined {
+  public get itemName(): string {
     return this.props.itemName;
   }
 
@@ -34,5 +35,13 @@ export class Inventory {
 
   public get amount(): number {
     return this.props.amount;
+  }
+
+  public set characterId(characterId: string) {
+    this.props.characterId = characterId;
+  }
+
+  public get characterId(): string {
+    return this.props.characterId;
   }
 }

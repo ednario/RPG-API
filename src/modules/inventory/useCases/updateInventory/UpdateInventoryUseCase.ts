@@ -8,6 +8,7 @@ interface UpdateInventoryRequest {
   id: string;
   itemName: string;
   amount: number;
+  characterId: string;
 }
 
 interface UpdateInventoryResponse {
@@ -22,11 +23,13 @@ export class UpdateInventoryUseCase {
     id,
     itemName,
     amount,
+    characterId,
   }: UpdateInventoryRequest): Promise<UpdateInventoryResponse> {
     const inventory = await this.inventoryRepository.findById(id);
 
     inventory.itemName = itemName;
     inventory.amount = amount;
+    inventory.characterId = characterId;
 
     await this.inventoryRepository.update(inventory);
 

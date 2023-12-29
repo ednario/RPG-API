@@ -21,6 +21,12 @@ import { FindByIdEquipmentsUseCase } from '@equipments/useCases/findByIdEquipmen
 import { CreateEquipmentsUseCase } from '@equipments/useCases/createEquipments/CreateEquipmentsUseCase';
 import { UpdateEquipmentsUseCase } from '@equipments/useCases/updateEquipments/UpdateEquipmentsUseCase';
 import { DeleteEquipmentsUseCase } from '@equipments/useCases/deleteEquipments/DeleteEquipmentsUseCase';
+import { inventoryController } from './controllers/inventory.controller';
+import { FindAllInventoryUseCase } from '@inventory/useCases/findAllInventory/FindAllInventoryUseCase';
+import { FindByIdInventoryUseCase } from '@inventory/useCases/findByIdInventory/FindByIdInventoryUseCase';
+import { CreateInventoryUseCase } from '@inventory/useCases/createInventory/CreateInventoryUseCase';
+import { UpdateInventoryUseCase } from '@inventory/useCases/updateInventory/UpdateInventoryUseCase';
+import { DeleteInventoryUseCase } from '@inventory/useCases/deleteInventory/DeleteInventoryUseCase';
 
 @Module({
   imports: [DatabaseModule],
@@ -28,6 +34,7 @@ import { DeleteEquipmentsUseCase } from '@equipments/useCases/deleteEquipments/D
     CharacterController,
     AttributesController,
     EquipmentsController,
+    inventoryController,
   ],
   providers: [
     CreateCharacterUseCase,
@@ -45,6 +52,11 @@ import { DeleteEquipmentsUseCase } from '@equipments/useCases/deleteEquipments/D
     CreateEquipmentsUseCase,
     UpdateEquipmentsUseCase,
     DeleteEquipmentsUseCase,
+    FindAllInventoryUseCase,
+    FindByIdInventoryUseCase,
+    CreateInventoryUseCase,
+    UpdateInventoryUseCase,
+    DeleteInventoryUseCase,
   ],
 })
 export class HttpModule {}
