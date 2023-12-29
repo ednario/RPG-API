@@ -7,8 +7,6 @@ COPY ./.env.production ./.env
 
 RUN npm install --quiet --no-optional --no-fund --loglevel=error
 
-RUN npx prisma migrate deploy
-
 RUN npx prisma generate
 
 RUN npm run build
