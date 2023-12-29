@@ -6,6 +6,7 @@ interface CreateSkillRequest {
   name: string;
   wear: number;
   costMp: number;
+  characterId: string;
 }
 
 interface CreateSkillResponse {
@@ -18,8 +19,9 @@ export class CreateSkillUseCase {
     name,
     wear,
     costMp,
+    characterId,
   }: CreateSkillRequest): Promise<CreateSkillResponse> {
-    const skill = new Skill({ name, wear, costMp });
+    const skill = new Skill({ name, wear, costMp, characterId });
 
     return { skill };
   }

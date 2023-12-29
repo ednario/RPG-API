@@ -78,8 +78,8 @@ model Inventory {
 model Skill {
   id          String    @id @default(uuid())
   name        String
-  wear        String
-  costMP      Int
+  wear        Int
+  costMp      Int
   characterId String
   character   Character @relation(fields: [characterId], references: [id])
 }

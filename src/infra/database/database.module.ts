@@ -6,12 +6,15 @@ import { PrismaCharacterRepository } from './prisma/repositories/prisma-characte
 import { PrismaAttributesRepository } from './prisma/repositories/prisma-attributes.repository';
 import { PrismaEquipmentsRepository } from './prisma/repositories/prisma-equipments.reposity';
 import { PrismaInventoryRepository } from './prisma/repositories/prisma-inventory.repository';
+import { PrismaPhobiasRepository } from './prisma/repositories/prisma-phobias.repository';
+import { PrismaSkillRepository } from './prisma/repositories/prisma-skill.repository';
+
 import { CharacterRepository } from '@character/repositories/CharacterRepository';
 import { AttributesRepository } from '@attributes/repositories/AttributesRepository';
 import { EquipmentsRepository } from '@equipments/repositories/EquipmentsRepository';
 import { InventoryRepository } from '@inventory/repositories/InventoryRepository';
 import { PhobiasRepository } from '@phobias/repositories/PhobiasRepository';
-import { PrismaPhobiasRepository } from './prisma/repositories/prisma-phobias.repository';
+import { SkillRepository } from '@skill/repositories/SkillRepository';
 
 @Module({
   providers: [
@@ -36,6 +39,10 @@ import { PrismaPhobiasRepository } from './prisma/repositories/prisma-phobias.re
       provide: PhobiasRepository,
       useClass: PrismaPhobiasRepository,
     },
+    {
+      provide: SkillRepository,
+      useClass: PrismaSkillRepository,
+    },
   ],
   exports: [
     CharacterRepository,
@@ -43,6 +50,7 @@ import { PrismaPhobiasRepository } from './prisma/repositories/prisma-phobias.re
     EquipmentsRepository,
     InventoryRepository,
     PhobiasRepository,
+    SkillRepository,
   ],
 })
 export class DatabaseModule {}

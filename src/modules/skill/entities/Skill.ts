@@ -4,6 +4,7 @@ export interface SkillProps {
   name: string;
   wear: number;
   costMp: number;
+  characterId: string;
 }
 
 export class Skill {
@@ -25,7 +26,7 @@ export class Skill {
     this.props.name = name;
   }
 
-  public get name(): string | undefined {
+  public get name(): string {
     return this.props.name;
   }
 
@@ -43,5 +44,13 @@ export class Skill {
 
   public get costMp(): number {
     return this.props.costMp;
+  }
+
+  public set characterId(characterId: string) {
+    this.props.characterId = characterId;
+  }
+
+  public get characterId(): string {
+    return this.props.characterId;
   }
 }
