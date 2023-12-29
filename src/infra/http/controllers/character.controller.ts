@@ -10,12 +10,15 @@ import {
 import { CreateCharacterBody } from '../dtos/create-character-body';
 import { CharacterViewModel } from '../view-models/character-view-model';
 
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreateCharacterUseCase } from '@character/useCases/createCharacter/CreateCharacterUseCase';
 import { FindByIdCharacterUseCase } from '@character/useCases/findByIdCharacter/FindByIdCharacterUseCase';
 import { FindAllCharacterUseCase } from '@character/useCases/findAllCharacter/FindAllCharacterUseCase';
 import { UpdateCharacterUseCase } from '@character/useCases/updateCharacter/UpdateCharacterUseCase';
 import { DeleteCharacterUseCase } from '@character/useCases/deleteCharacter/DeleteCharacterUseCase';
 
+@ApiTags('characters')
 @Controller('characters')
 export class CharacterController {
   constructor(

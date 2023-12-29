@@ -8,6 +8,8 @@ import {
   Put,
 } from '@nestjs/common';
 
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreateEquipmentBody } from '../dtos/create-equipments-body';
 import { EquipmentsViewModel } from '../view-models/equipments-view-model';
 
@@ -17,6 +19,7 @@ import { FindAllEquipmentsUseCase } from '@equipments/useCases/findAllEquipments
 import { UpdateEquipmentsUseCase } from '@equipments/useCases/updateEquipments/UpdateEquipmentsUseCase';
 import { DeleteEquipmentsUseCase } from '@equipments/useCases/deleteEquipments/DeleteEquipmentsUseCase';
 
+@ApiTags('equipments')
 @Controller('equipments')
 export class EquipmentsController {
   constructor(

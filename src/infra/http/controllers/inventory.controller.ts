@@ -11,12 +11,15 @@ import {
 import { CreateInventoryBody } from '../dtos/create-inventory-body';
 import { InventoryViewModel } from '../view-models/inventory-view-model';
 
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreateInventoryUseCase } from '@inventory/useCases/createInventory/CreateInventoryUseCase';
 import { FindByIdInventoryUseCase } from '@inventory/useCases/findByIdInventory/FindByIdInventoryUseCase';
 import { FindAllInventoryUseCase } from '@inventory/useCases/findAllInventory/FindAllInventoryUseCase';
 import { UpdateInventoryUseCase } from '@inventory/useCases/updateInventory/UpdateInventoryUseCase';
 import { DeleteInventoryUseCase } from '@inventory/useCases/deleteInventory/DeleteInventoryUseCase';
 
+@ApiTags('inventory')
 @Controller('inventory')
 export class InventoryController {
   constructor(

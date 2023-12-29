@@ -11,12 +11,15 @@ import {
 import { CreatePhobiasBody } from '../dtos/create-phobias-body';
 import { PhobiasViewModel } from '../view-models/phobias-view-model';
 
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreatePhobiasUseCase } from '@phobias/useCases/createPhobias/CreatePhobiasUseCase';
 import { FindByIdPhobiasUseCase } from '@phobias/useCases/findByIdPhobias/FindByIdPhobiasUseCase';
 import { FindAllPhobiasUseCase } from '@phobias/useCases/findAllPhobias/FindAllPhobiasUseCase';
 import { UpdatePhobiasUseCase } from '@phobias/useCases/updatePhobias/UpdatePhobiasUseCase';
 import { DeletePhobiasUseCase } from '@phobias/useCases/deletePhobias/DeletePhobiasUseCase';
 
+@ApiTags('phobias')
 @Controller('phobias')
 export class PhobiasController {
   constructor(

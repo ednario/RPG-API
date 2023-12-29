@@ -10,12 +10,15 @@ import {
 import { CreateAttributesBody } from '../dtos/create-attributes-body';
 import { AttributesViewModel } from '../view-models/attributes-view-model';
 
+import { ApiTags } from '@nestjs/swagger';
+
 import { CreateAttributesUseCase } from '@attributes/useCases/createAttributes/CreateAttributesUseCase';
 import { FindByIdAttributesUseCase } from '@attributes/useCases/findByIdAttributes/FindByIdAttributesUseCase';
 import { FindAllAttributesUseCase } from '@attributes/useCases/findAllAttributes/FindAllAttributesUseCase';
 import { UpdateAttributesUseCase } from '@attributes/useCases/updateAttributes/UpdateAttributesUseCase';
 import { DeleteAttributesUseCase } from '@attributes/useCases/deleteAttributes/DeleteAttributesUseCase';
 
+@ApiTags('attributes')
 @Controller('attributes')
 export class AttributesController {
   constructor(
