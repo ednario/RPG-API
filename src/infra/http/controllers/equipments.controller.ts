@@ -29,65 +29,86 @@ export class EquipmentsController {
 
   @Get()
   async findAll() {
-    const { equipments } = await this.findAllEquipmentsUseCase.execute();
+    try {
+      const { equipments } = await this.findAllEquipmentsUseCase.execute();
 
-    return equipments;
+      return equipments;
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Get(':id')
   async findById(@Param('id') id: string) {
-    const { equipments } = await this.findByIdEquipmentsUseCase.execute({
-      id,
-    });
+    try {
+      const { equipments } = await this.findByIdEquipmentsUseCase.execute({
+        id,
+      });
 
-    return EquipmentsViewModel.toHTTP(equipments);
+      return EquipmentsViewModel.toHTTP(equipments);
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Post()
   async create(@Body() body: CreateEquipmentBody) {
-    const { head, chest, gloves, boots, leftGun, rightGun, characterId } = body;
+    try {
+      const { head, chest, gloves, boots, leftGun, rightGun, characterId } =
+        body;
 
-    const { equipments } = await this.createEquipmentsUseCase.execute({
-      head,
-      chest,
-      gloves,
-      boots,
-      leftGun,
-      rightGun,
-      characterId,
-    });
+      const { equipments } = await this.createEquipmentsUseCase.execute({
+        head,
+        chest,
+        gloves,
+        boots,
+        leftGun,
+        rightGun,
+        characterId,
+      });
 
-    return EquipmentsViewModel.toHTTP(equipments);
+      return EquipmentsViewModel.toHTTP(equipments);
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: CreateEquipmentBody) {
-    const equipments = await this.findByIdEquipmentsUseCase.execute({ id });
+    try {
+      const equipments = await this.findByIdEquipmentsUseCase.execute({ id });
 
-    if (!equipments) {
-      throw new Error('Character not found');
+      if (!equipments) {
+        throw new Error('Character not found');
+      }
+
+      const newEquipments = await this.updateEquipmentsUseCase.execute({
+        id,
+        ...body,
+      });
+
+      return EquipmentsViewModel.toHTTP(newEquipments.equipments);
+    } catch (error: any) {
+      return { message: error.message };
     }
-
-    const newEquipments = await this.updateEquipmentsUseCase.execute({
-      id,
-      ...body,
-    });
-
-    return EquipmentsViewModel.toHTTP(newEquipments.equipments);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    const character = await this.findByIdEquipmentsUseCase.execute({ id });
+    try {
+      const character = await this.findByIdEquipmentsUseCase.execute({ id });
 
-    if (!character) {
-      throw new Error('Character not found');
+      if (!character) {
+        throw new Error('Character not found');
+      }
+
+      await this.deleteEquipmentsUseCase.execute({
+        id,
+      });
+
+      return { message: 'Character deleted' };
+    } catch (error: any) {
+      return { message: error.message };
     }
-
-    await this.deleteEquipmentsUseCase.execute({
-      id,
-    });
-
-    return { message: 'Character deleted' };
   }
 }

@@ -28,75 +28,95 @@ export class CharacterController {
 
   @Get()
   async findAll() {
-    const characters = await this.findAllCharacterUseCase.execute();
+    try {
+      const characters = await this.findAllCharacterUseCase.execute();
 
-    return { characters };
+      return { characters };
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Get(':id')
   async findById(@Param('id') id: string) {
-    const { character } = await this.findByIdCharacterUseCase.execute({
-      id,
-    });
+    try {
+      const { character } = await this.findByIdCharacterUseCase.execute({
+        id,
+      });
 
-    return CharacterViewModel.toHTTP(character);
+      return CharacterViewModel.toHTTP(character);
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Post()
   async create(@Body() body: CreateCharacterBody) {
-    const {
-      name,
-      race,
-      level,
-      experience,
-      gold,
-      maximumAttack,
-      maximumDefense,
-      userId,
-    } = body;
+    try {
+      const {
+        name,
+        race,
+        level,
+        experience,
+        gold,
+        maximumAttack,
+        maximumDefense,
+        userId,
+      } = body;
 
-    const { character } = await this.createCharacterUseCase.execute({
-      name,
-      race,
-      level,
-      experience,
-      gold,
-      maximumAttack,
-      maximumDefense,
-      userId,
-    });
+      const { character } = await this.createCharacterUseCase.execute({
+        name,
+        race,
+        level,
+        experience,
+        gold,
+        maximumAttack,
+        maximumDefense,
+        userId,
+      });
 
-    return CharacterViewModel.toHTTP(character);
+      return CharacterViewModel.toHTTP(character);
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: CreateCharacterBody) {
-    const character = await this.findByIdCharacterUseCase.execute({ id });
+    try {
+      const character = await this.findByIdCharacterUseCase.execute({ id });
 
-    if (!character) {
-      throw new Error('Character not found');
+      if (!character) {
+        throw new Error('Character not found');
+      }
+
+      const newCharacter = await this.updateCharacterUseCase.execute({
+        id,
+        ...body,
+      });
+
+      return CharacterViewModel.toHTTP(newCharacter.character);
+    } catch (error: any) {
+      return { message: error.message };
     }
-
-    const newCharacter = await this.updateCharacterUseCase.execute({
-      id,
-      ...body,
-    });
-
-    return CharacterViewModel.toHTTP(newCharacter.character);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    const character = await this.findByIdCharacterUseCase.execute({ id });
+    try {
+      const character = await this.findByIdCharacterUseCase.execute({ id });
 
-    if (!character) {
-      throw new Error('Character not found');
+      if (!character) {
+        throw new Error('Character not found');
+      }
+
+      await this.deleteCharacterUseCase.execute({
+        id,
+      });
+
+      return { message: 'Character deleted' };
+    } catch (error: any) {
+      return { message: error.message };
     }
-
-    await this.deleteCharacterUseCase.execute({
-      id,
-    });
-
-    return { message: 'Character deleted' };
   }
 }

@@ -28,75 +28,95 @@ export class AttributesController {
 
   @Get()
   async findAll() {
-    const { Attributes } = await this.findAllAttributesUseCase.execute();
+    try {
+      const { Attributes } = await this.findAllAttributesUseCase.execute();
 
-    return Attributes;
+      return Attributes;
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Get(':id')
   async findById(@Param('id') id: string) {
-    const { attributes } = await this.findByIdAttributesUseCase.execute({
-      id,
-    });
+    try {
+      const { attributes } = await this.findByIdAttributesUseCase.execute({
+        id,
+      });
 
-    return AttributesViewModel.toHTTP(attributes);
+      return AttributesViewModel.toHTTP(attributes);
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Post()
   async create(@Body() body: CreateAttributesBody) {
-    const {
-      hp,
-      mp,
-      strength,
-      agility,
-      dexterity,
-      constitution,
-      intelligence,
-      characterId,
-    } = body;
+    try {
+      const {
+        hp,
+        mp,
+        strength,
+        agility,
+        dexterity,
+        constitution,
+        intelligence,
+        characterId,
+      } = body;
 
-    const { attributes } = await this.createAttributesUseCase.execute({
-      hp,
-      mp,
-      strength,
-      agility,
-      dexterity,
-      constitution,
-      intelligence,
-      characterId,
-    });
+      const { attributes } = await this.createAttributesUseCase.execute({
+        hp,
+        mp,
+        strength,
+        agility,
+        dexterity,
+        constitution,
+        intelligence,
+        characterId,
+      });
 
-    return AttributesViewModel.toHTTP(attributes);
+      return AttributesViewModel.toHTTP(attributes);
+    } catch (error: any) {
+      return { message: error.message };
+    }
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: CreateAttributesBody) {
-    const Attributes = await this.findByIdAttributesUseCase.execute({ id });
+    try {
+      const Attributes = await this.findByIdAttributesUseCase.execute({ id });
 
-    if (!Attributes) {
-      throw new Error('Attributes not found');
+      if (!Attributes) {
+        throw new Error('Attributes not found');
+      }
+
+      const newAttributes = await this.updateAttributesUseCase.execute({
+        id,
+        ...body,
+      });
+
+      return AttributesViewModel.toHTTP(newAttributes.attributes);
+    } catch (error: any) {
+      return { message: error.message };
     }
-
-    const newAttributes = await this.updateAttributesUseCase.execute({
-      id,
-      ...body,
-    });
-
-    return AttributesViewModel.toHTTP(newAttributes.attributes);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    const Attributes = await this.findByIdAttributesUseCase.execute({ id });
+    try {
+      const Attributes = await this.findByIdAttributesUseCase.execute({ id });
 
-    if (!Attributes) {
-      throw new Error('Attributes not found');
+      if (!Attributes) {
+        throw new Error('Attributes not found');
+      }
+
+      await this.deleteAttributesUseCase.execute({
+        id,
+      });
+
+      return { message: 'Attributes deleted' };
+    } catch (error: any) {
+      return { message: error.message };
     }
-
-    await this.deleteAttributesUseCase.execute({
-      id,
-    });
-
-    return { message: 'Attributes deleted' };
   }
 }
