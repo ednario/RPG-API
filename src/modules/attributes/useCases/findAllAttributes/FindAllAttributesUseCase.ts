@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { Attributes } from '@attributes/entities/attributes';
+import { Attributes } from '@attributes/entities/Attributes';
 
 import { AttributesRepository } from '@attributes/repositories/AttributesRepository';
 

@@ -1,4 +1,4 @@
-import { Attributes } from '@attributes/entities/attributes';
+import { Attributes } from '@attributes/entities/Attributes';
 
 export class AttributesViewModel {
   static toHTTP(attributes: Attributes) {

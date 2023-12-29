@@ -1,6 +1,6 @@
 import { Attributes as RawAttributes } from '@prisma/client';
 
-import { Attributes } from '@attributes/entities/attributes';
+import { Attributes } from '@attributes/entities/Attributes';
 
 export class PrismaAttributesMapper {
   static toPrisma(attributes: Attributes) {

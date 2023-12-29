@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@infra/database/prisma/prisma.service';
 import { PrismaAttributesMapper } from '@infra/database/prisma/mappers/prisma-attributes-mapper';
 
-import { Attributes } from '@attributes/entities/attributes';
+import { Attributes } from '@attributes/entities/Attributes';
 import { AttributesRepository } from '@attributes/repositories/AttributesRepository';
 
 @Injectable()

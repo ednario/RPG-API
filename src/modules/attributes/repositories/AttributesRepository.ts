@@ -1,4 +1,4 @@
-import { Attributes } from '../entities/attributes';
+import { Attributes } from '../entities/Attributes';
 
 export abstract class AttributesRepository {
   abstract create(attributes: Attributes): Promise<void>;
