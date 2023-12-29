@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { Skill } from '../../entities/Skill';
+import { SkillRepository } from '@skill/repositories/SkillRepository';
 
 interface CreateSkillRequest {
   name: string;
@@ -15,6 +16,8 @@ interface CreateSkillResponse {
 
 @Injectable()
 export class CreateSkillUseCase {
+  constructor(private skillRepository: SkillRepository) {}
+
   async execute({
     name,
     wear,
@@ -22,6 +25,8 @@ export class CreateSkillUseCase {
     characterId,
   }: CreateSkillRequest): Promise<CreateSkillResponse> {
     const skill = new Skill({ name, wear, costMp, characterId });
+
+    await this.skillRepository.create(skill);
 
     return { skill };
   }
